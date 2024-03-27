@@ -33,10 +33,7 @@ export default function Form(props) {
     }
 
     const text_copy = () => {
-        let cpybtn = document.getElementById("my_box");
-        cpybtn.select();
-        cpybtn.setSelectionRange(0, 9999);
-        navigator.clipboard.writeText(cpybtn.value);
+        navigator.clipboard.writeText(text);
         props.showalert("Text copied !", "success");
 
     }
@@ -68,6 +65,9 @@ export default function Form(props) {
                 <p>{text.length > 0 ? text : "Nothing to preview"}</p>
             </div>
 
+            <div className="container ">
+                <img src="Instagram-Logo.wine.png" alt="insta" height={"300px"} width={"250px"}/>
+            </div>
         </>
     )
 }
