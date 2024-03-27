@@ -1,7 +1,7 @@
-import React from 'react'
+// import React from 'react'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 export default function Navbar(props) {   //we use props here so that we can modify any heading when we import in another page
 
     const [def_text, new_text] = useState("Dark mode")
@@ -21,7 +21,7 @@ export default function Navbar(props) {   //we use props here so that we can mod
             <nav className={`navbar navbar-expand-lg  navbar-${props.mode} bg-${props.mode}`}>
                 <div className="container-fluid">
 
-                    <Link className="navbar-brand" to="/">{props.title}</Link>   {/*{props.title} is used to modify title in page we import code */}
+                    <a className="navbar-brand" href="#">{props.title}</a>   {/*{props.title} is used to modify title in page we import code */}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -29,11 +29,11 @@ export default function Navbar(props) {   //we use props here so that we can mod
                     <div className="collapse navbar-collapse " id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li>
-                                <Link className="nav-a active mx-3" aria-current="page" to="/" style={{ textDecoration: 'none', color: props.mode === "dark" ? "white" : "black"  }} >{props.second_title} </Link>
+                                <a className="nav-a active mx-3" aria-current="page" href="#" style={{ textDecoration: 'none', color: props.mode === "dark" ? "white" : "black" }} >{props.second_title} </a>
                             </li>
 
                             <li className="nav-item">
-                                <Link className="nav-a" to="/about" style={{ textDecoration: 'none', color: props.mode === "dark" ? "white" : "black" }}>{props.third_title}</Link>  {/*  change a with link and href with to to use react router to link buttons to different pages*/}
+                                <a className="nav-a" href="#" style={{ textDecoration: 'none', color: props.mode === "dark" ? "white" : "black" }}>{props.third_title}</a>  {/*  change a with link and href with to to use react router to link buttons to different pages*/}
                             </li>
                         </ul>
                     </div>
