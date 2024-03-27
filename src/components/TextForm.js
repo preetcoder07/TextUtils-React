@@ -60,8 +60,9 @@ export default function Form(props) {
             <div className="container my-2" style={{ color: props.mode === "dark" ? "white" : "black" }}>
                 <h1>your text summary </h1>
                 {/*text.split(" ").length is used to count total words*/}
-                <p>There are total <b>{text.length} characters</b> or <b>{text.split(/\s+/).filter((element) => { return element.length != 0 }).length} words</b></p>  {/* filter function will take a element do not return element when its length is zero {this will avoid word count = 1 when our text area is empty}  */}
-                <p>It will take <b>{0.008 * text.split(" ").filter((element) => { return element.length != 0 }).length * 60} seconds</b> to read</p>
+                {/* filter function will take a element do not return element when its length is zero {this will avoid word count = 1 when our text area is empty}  */}
+                <p>There are total <b>{text.length} characters</b> or <b>{text.split("/\s+/").filter((element) => { return element.length !== 0 }).length} words</b></p>  {/* text.split("/\s+/") in which s means it will include Whitespaces or new line and + means more than one time*/}
+                <p>It will take <b>{0.008 * text.split(" ").filter((element) => { return element.length !== 0 }).length * 60} seconds</b> to read</p>
 
                 <h2>Preview</h2>
                 <p>{text.length > 0 ? text : "Nothing to preview"}</p>
