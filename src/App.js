@@ -1,16 +1,16 @@
-// import About from "./components/About";
+import About from "./components/About";
 import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";  //importing Navbar
 import Form from "./components/TextForm";
 import { useState } from "react";
 import React from "react";
 
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Link
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 function App() {
@@ -59,19 +59,18 @@ function App() {
 
   return (
     <>
-      {/* <Router> */}
+      <Router>
         <Navbar title="TextUtils" second_title="Home" third_title="About us" mode={mode} toggle={toggle}  /> {/*    we created a navbar in another js file in components and the we import it to make tidy code */}
 
         <Alert alert={alert} />
 
         <div className="container" >           {/* container is is bootstrap class which make a container for the items present in it */}
-        <Form my-3 mode={mode} showalert={showalert} />
-          {/* <Routes>
+          <Routes>
             <Route path="/about" element={<About mode={mode} />} />
             <Route path="/" element={<Form my-3 mode={mode} showalert={showalert} />} />
-          </Routes> */}
+          </Routes>
         </div>
-      {/* </Router> */}
+      </Router>
     </>
   );
 }

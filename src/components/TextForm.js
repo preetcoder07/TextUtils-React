@@ -5,8 +5,8 @@ import React from 'react'
 export default function Form(props) {
     const upper_case = () => {
         setText(text.toUpperCase());
-        props.showalert("Converted into uppercase !" ,"success");
-        
+        props.showalert("Converted into uppercase !", "success");
+
     }
 
     const change_value = (event) => {
@@ -16,19 +16,19 @@ export default function Form(props) {
 
     const lower_case = () => {
         setText(text.toLowerCase());
-        props.showalert("Converted into lowercase !","success");
+        props.showalert("Converted into lowercase !", "success");
 
     }
 
     const clear_text = () => {
         setText("");
-        props.showalert("Text Cleared !" ,"success");
+        props.showalert("Text Cleared !", "success");
 
     }
 
     const mutliply_text = () => {
         setText(text.concat(text));
-        props.showalert("Texthas been multiplied !" ,"success");
+        props.showalert("Texthas been multiplied !", "success");
 
     }
 
@@ -37,7 +37,7 @@ export default function Form(props) {
         cpybtn.select();
         cpybtn.setSelectionRange(0, 9999);
         navigator.clipboard.writeText(cpybtn.value);
-        props.showalert("Text copied !" ,"success");
+        props.showalert("Text copied !", "success");
 
     }
 
@@ -45,27 +45,28 @@ export default function Form(props) {
 
     return (
         <>
-            <div className="container my-3" style = {{color: props.mode==="dark"?"white":"black"}} >  {/*my-3 means 3 px space in y axis */}
-                <div className="mb-3">
-                    <h3>Enter the text to analyse</h3>
-                    <textarea className="form-control" value={text} id="my_box" rows="8" onChange={change_value} style = {{backgroundColor: props.mode==="dark"?"grey":"white" ,color: props.mode==="dark"?"white":"black",border:"2px solid white"}} ></textarea>
+            <div className="container my-3" style={{ color: props.mode === "dark" ? "white" : "black" }} >  {/*my-3 means 3 px space in y axis */}
+                <div className="mb-4">{/* mb-4 means margin botton */}
+                    <h3>TextUtils : Word counter, Character counter , Text copy</h3>
+                    <textarea className="form-control" value={text} id="my_box" rows="8" onChange={change_value} style={{ backgroundColor: props.mode === "dark" ? "#3a5fa9" : "white", color: props.mode === "dark" ? "white" : "black", border: "2px solid white" }} ></textarea>
                 </div>
-                <button className="btn btn-primary mx-3" onClick={upper_case} >UpperCase</button>
-                <button className="btn btn-secondary mx-2" onClick={lower_case}>LowerCase</button>
-                <button className="btn btn-success mx-2" onClick={clear_text}>Clear</button>
-                <button className="btn btn-danger mx-2" onClick={mutliply_text}>multiply</button>
-                <button id='my_box' className="btn btn-info mx-2" onClick={text_copy}>Copy</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-3  my-2" onClick={upper_case} >UpperCase</button>   {/*disabled = {text.length === 0} means if there is no word in text area then these buttons were disabled */}
+                <button disabled={text.length === 0} className="btn btn-secondary mx-2 my-2" onClick={lower_case}>LowerCase</button>
+                <button disabled={text.length === 0} className="btn btn-success mx-2 my-2" onClick={clear_text}>Clear</button>
+                <button disabled={text.length === 0} className="btn btn-danger mx-2 my-2" onClick={mutliply_text}>multiply</button>
+                <button disabled={text.length === 0} id='my_box' className="btn btn-info mx-2 my-2" onClick={text_copy}>Copy</button>
             </div>
 
-            <div className="container my-2" style = {{color: props.mode==="dark"?"white":"black"}}>
+            <div className="container my-2" style={{ color: props.mode === "dark" ? "white" : "black" }}>
                 <h1>your text summary </h1>
-                <p>There are total <b>{text.length} characters</b> or <b>{text.split(" ").length} words</b></p>  {/*text.split(" ").length is used to count total words*/}
-                <p>It will take <b>{0.008 * text.split(" ").length * 60} seconds</b> to read</p>
+                {/*text.split(" ").length is used to count total words*/}
+                <p>There are total <b>{text.length} characters</b> or <b>{text.split(" ").filter((element) => { return element.length != 0 }).length} words</b></p>  {/* filter function will take a element do not return element when its length is zero {this will avoid word count = 1 when our text area is empty}  */}
+                <p>It will take <b>{0.008 * text.split(" ").filter((element) => { return element.length != 0 }).length * 60} seconds</b> to read</p>
 
                 <h2>Preview</h2>
-                <p>{text.length > 0 ? text : "Enter something to preview"}</p>
+                <p>{text.length > 0 ? text : "Nothing to preview"}</p>
             </div>
-            
+
         </>
     )
 }
