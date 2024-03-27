@@ -2,6 +2,7 @@ import { useState } from 'react'//useState is React Hook that allows you to add 
 import React from 'react'
 
 
+
 export default function Form(props) {
     const upper_case = () => {
         setText(text.toUpperCase());
@@ -65,8 +66,11 @@ export default function Form(props) {
                 <p>{text.length > 0 ? text : "Nothing to preview"}</p>
             </div>
 
-            <div className="container ">
-                <img src="Instagram-Logo.wine.png" alt="insta" height={"300px"} width={"250px"}/>
+            <div className="container mt-5  mb-5">
+                <h2 style={{ color: props.mode === "dark" ? "white" : "black"}}>Follow me on :</h2>
+                <a href="https://www.instagram.com/preet_gusain200_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className='' style={{ textDecoration: 'none', color: props.mode === "dark" ? "white" : "black" }}><strong>Instagram</strong></a>
+                <a href="www.linkedin.com/in/preet-gusain-986b022a5" className='mx-3' style={{ textDecoration: 'none', color: props.mode === "dark" ? "white" : "black" }}><strong>LinkedIn</strong></a>
+                <a href="#" className='mx-3' style={{ textDecoration: 'none', color: props.mode === "dark" ? "white" : "black" }}><strong>Github</strong></a>
             </div>
         </>
     )
